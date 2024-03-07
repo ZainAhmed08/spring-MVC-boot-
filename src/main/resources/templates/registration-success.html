@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Successful</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 24px; /* Adjust the font size as needed */
+            border-radius: 12px; /* Add rounded corners */
+            overflow: hidden; /* Ensure that the border-radius is applied properly */
+        }
+
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 12px; /* Adjust the padding as needed */
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+        }
+
+        .table-dark th, .table-dark td {
+            background-color: #343a40;
+            color: #ffffff;
+        }
+
+        .table th:first-child, .table td:first-child {
+            padding-left: 20px; /* Adjust the left padding as needed */
+        }
+
+        .table th:last-child, .table td:last-child {
+            padding-right: 20px; /* Adjust the right padding as needed */
+        }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+<body style="font-family: 'JetBrains Mono';">
+<div class="container">
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">name</th>
+            <th scope="col">email</th>
+            <th scope="col">address</th>
+            <th scope="col">password</th>
+            <th scope="col">city</th>
+            <th scope="col">state</th>
+            <th scope="col">zipcode</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>${customer.name}</td>
+            <td>${customer.email}</td>
+            <td>${customer.address}</td>
+            <td>${customer.password}</td>
+            <td>${customer.city}</td>
+            <td>${customer.state}</td>
+            <td>${customer.zipcode}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<h1>Result is : ${customer}</h1>
+</body>
+</html>
