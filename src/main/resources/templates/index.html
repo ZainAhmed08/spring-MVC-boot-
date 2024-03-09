@@ -1,93 +1,93 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Registration Successful</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Registration Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
-        body, html {
+        /* Custom CSS for centering content */
+        html, body {
             height: 100%;
-            margin: 0;
             display: flex;
-            justify-content: center;
+            justify-content: center; /* Center horizontally */
             align-items: center;
-            background-color: #f7f7f7;
         }
-
         .container {
-            max-width: 800px;
+            margin: 0 auto; /* Center the container */
+        }
+        .banking-content {
             padding: 20px;
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-right: 1px solid #ccc;
+            margin-right: 20px; /* Adjust the vertical divider towards the left */
         }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 24px; /* Adjust the font size as needed */
-            border-radius: 12px; /* Add rounded corners */
-            overflow: hidden; /* Ensure that the border-radius is applied properly */
+        .banking-content h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
         }
-
-        .table th, .table td {
-            border: 1px solid #ddd;
-            padding: 12px; /* Adjust the padding as needed */
-            text-align: left;
-        }
-
-        .table th {
-            background-color: #f2f2f2;
-        }
-
-        .table-dark th, .table-dark td {
-            background-color: #343a40;
-            color: #ffffff;
-        }
-
-        .table th:first-child, .table td:first-child {
-            padding-left: 20px; /* Adjust the left padding as needed */
-        }
-
-        .table th:last-child, .table td:last-child {
-            padding-right: 20px; /* Adjust the right padding as needed */
+        .banking-content p {
+            font-size: 16px;
+            line-height: 1.6;
         }
     </style>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 </head>
-<body style="font-family: 'JetBrains Mono';">
+<body>
 
-    <h1>The customer is : <span th:text="${customer}">[Customer Object]</span></h1>
 <div class="container">
-    <table class="table">
-        <thead class="table-dark">
-        <tr>
-            <th scope="col">name</th>
-            <th scope="col">email</th>
-            <th scope="col">address</th>
-            <th scope="col">password</th>
-            <th scope="col">city</th>
-            <th scope="col">state</th>
-            <th scope="col">zipcode</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td th:text="${customer.name}">[Name]</td>
-            <td th:text="${customer.email}">[Email]</td>
-            <td th:text="${customer.address}">[Address]</td>
-            <td th:text="${customer.password}">[Password]</td>
-            <td th:text="${customer.city}">[City]</td>
-            <td th:text="${customer.state}">[State]</td>
-            <td th:text="${customer.zipcode}">[Zipcode]</td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="banking-content">
+<!--                <img src="moneypng.jpg" alt="Bank Logo" class="img-fluid mb-4">-->
+                <h2>Welcome to Our Bank</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada urna ut ipsum condimentum, eu ultricies erat vehicula.</p>
+                <p>Suspendisse potenti. Proin vitae ipsum auctor, mattis libero nec, accumsan velit. Nulla facilisi.</p>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center mb-4">Customer Registration Form</h5>
+                    <form action="register">
+                        <div class="form-group">
+                            <label for="inputName">Full Name</label>
+                            <input type="text" class="form-control" id="inputName" placeholder="Enter your full name" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail">Email Address</label>
+                            <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email address" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword">Password</label>
+                            <input type="password" class="form-control" id="inputPassword" placeholder="Enter a password" name="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress">Address</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="Enter your address" name="address">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputCity">City</label>
+                                <input type="text" class="form-control" id="inputCity" name="city">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputState">State</label>
+                                <input type="text" class="form-control" id="inputState" name="state">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="inputZip">Zip</label>
+                                <input type="text" class="form-control" id="inputZip" name="zipcode">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-<h1>Result is : <span th:text="${customer}">[Customer Object]</span></h1>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Repository
 public class TextFileCustomerRepository implements CustomerRepository {
@@ -36,15 +38,28 @@ public class TextFileCustomerRepository implements CustomerRepository {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] data = line.split(",");
-                Customer customer = new Customer(data[0], data[1], data[2], data[3], data[4], data[5], data[6]);
-                customers.add(customer);
+                // Extract data using regular expressions
+                Matcher matcher = Pattern.compile("name=(.*?),\\s*email=(.*?),\\s*password=(.*?),\\s*address=(.*?),\\s*city=(.*?),\\s*state=(.*?),\\s*zipcode=(.*?)\\)").matcher(line);
+                if (matcher.find()) {
+                    String name = matcher.group(1);
+                    String email = matcher.group(2);
+                    String password = matcher.group(3);
+                    String address = matcher.group(4);
+                    String city = matcher.group(5);
+                    String state = matcher.group(6);
+                    String zipcode = matcher.group(7);
+
+                    // Create a new Customer object and add it to the list
+                    Customer customer = new Customer(name, email, password, address, city, state, zipcode);
+                    customers.add(customer);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         return customers;
     }
+
 
     @Override
     public Customer findById(String customerId) {

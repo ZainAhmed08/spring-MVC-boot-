@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 
 @Controller
 class HelloController {
@@ -31,6 +33,15 @@ class HelloController {
         return mv;
     }
 
+    @GetMapping("/allCustomers")
+    public ModelAndView getAllCustomers() {
+        List<Customer> customers = customerService.getAllCustomers();
+        log.info("the customer list is : "+customers);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("customersTableUI");
+        mv.addObject("customers",customers);
+        return mv;
+    }
 
 
     @GetMapping("register")
@@ -44,7 +55,7 @@ class HelloController {
             @RequestParam("zipcode") String zipcode) {
 
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("registration-success");
+        mv.setViewName("registrationComplete");
 
         Customer customer = new Customer(name,email,password,address,city,state,zipcode);
 
