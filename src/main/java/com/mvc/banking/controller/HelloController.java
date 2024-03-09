@@ -1,11 +1,11 @@
 package com.mvc.banking.controller;
 
+import com.mvc.banking.service.CustomerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,18 +13,25 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 class HelloController {
 
+    @Autowired
+    CustomerService customerService;
+
     Logger log = LoggerFactory.getLogger(HelloController.class);
 
-    @GetMapping("")
-    public String homePage() {
-        return "index";
+//    @GetMapping("")
+//    public String homePage() {
+//        return "testing";
+//    }
+
+    @GetMapping("/")
+    public ModelAndView homePage() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("index");
+        mv.addObject("title","The holy Quran");
+        return mv;
     }
 
 
-//    @RequestMapping("register")
-//    public void logOutput() {
-//        log.info("inside this method lol");
-//    }
 
     @GetMapping("register")
     public ModelAndView register(
@@ -40,8 +47,13 @@ class HelloController {
         mv.setViewName("registration-success");
 
         Customer customer = new Customer(name,email,password,address,city,state,zipcode);
+
+        customerService.addCustomer(customer);
+
         log.info(" and the customer is : "+customer);
         mv.addObject("customer",customer);
+        System.out.println("ModelAndView contents: " + mv.getModel());
+
         return mv;
     }
 }
