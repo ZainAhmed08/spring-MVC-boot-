@@ -16,8 +16,9 @@ public class TextFileCustomerRepository implements CustomerRepository {
 
     public TextFileCustomerRepository() {
         // Construct the file path
-        String directoryPath = "C:\\Users\\zaina\\spring-MVC-boot-\\src\\main\\java\\com\\mvc\\banking\\repository";
+        String directoryPath = "src/main/java/com/mvc/banking/repository";
         String fileName = "customers.txt";
+
         this.filePath = directoryPath + File.separator + fileName;
 
         // Check if the file exists, if not, create it

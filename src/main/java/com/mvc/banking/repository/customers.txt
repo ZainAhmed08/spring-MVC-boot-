@@ -1,0 +1,1 @@
+Customer(name=Zain Ahmed, email=zainahmed01997@gmail.com, password=rgsefbsgf, address=8-7-73 masood manzil , wynchipet , vijayawada, city=Vijayawada, state=Andhra Pradesh, zipcode=520001)
