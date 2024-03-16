@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Controller
@@ -35,7 +36,7 @@ class HelloController {
 
     @GetMapping("/allCustomers")
     public ModelAndView getAllCustomers() {
-        List<Customer> customers = customerService.getAllCustomers();
+        List<Customer> customers = customerService.getAllCustomers().stream().sorted((c1, c2) -> -1).collect(Collectors.toList());
         log.info("the customer list is : "+customers);
         ModelAndView mv = new ModelAndView();
         mv.setViewName("customersTableUI");
